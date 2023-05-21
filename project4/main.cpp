@@ -44,11 +44,21 @@ int main () {
     return 0;
 }
 
-//// APPLYDISCOUNT() //// <----- needs work.....
+//// APPLYDISCOUNT() ////
 float applyDiscount(DeliveryOrder ordr, Account& acct) // take in a DeliveryOrder pointer and a constant reference account
 {
-    if (acct.getStatus() == "VIP") // Check the account status to determine how to apply the discount
+    string aStatus = acct.getStatus();
+    // Check the account status to determine how to apply the discount
+    if (aStatus == "Owner") // Owner
     {
-        ordr.VIPdiscount(); // return the discounted balance of the order
+        return 0.1 * ordr.getOrderBalance(); // return the discounted balance of the order
+    }
+    else if (aStatus == "VIP") // VIP
+    {
+        return ordr.VIPdiscount() * ordr.getOrderBalance(); 
+    }
+    else if (aStatus == "Regular") // Regular
+    {
+        return ordr.getOrderBalance();
     }
 };
