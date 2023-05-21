@@ -34,7 +34,7 @@ class Account
 
     //// GETSTATUS() ////
     // We will have one getter function getStatus to return the status of the account. Remember all non-static getter functions should be constant.
-    const string getStatus(string username);
+    const string getStatus();
 
 
 

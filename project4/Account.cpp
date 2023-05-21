@@ -27,7 +27,7 @@ void Account::setStatus(string statusUpdate) {
 }
 
 //// GETSTATUS() ////
-const string Account::getStatus(string username) // return the status of the account.
+const string Account::getStatus() // return the status of the account.
 {
     return status;
 };
