@@ -19,7 +19,7 @@ class Account
 
     //// CONSTRUCTOR ////
     // The constructor will takes in a string to initialize the username and a string default to "Regular" to initialize the status.
-    Account(string un, string st);
+    Account(string un, string st="Regular");
     // The status is optional but can be "VIP", "Owner", or "Regular".
     
     //// DESTRUCTOR ////

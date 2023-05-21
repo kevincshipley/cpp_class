@@ -6,8 +6,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <iomanip>
-#include <cmath>
+#include <ctime>
+// #include <iomanip>
+// #include <cmath>
 using namespace std;
 
 //// APPLYDISCOUNT() ////
@@ -21,18 +22,29 @@ The applyDiscount() function will check the account status to determine how to a
 > If the account status is "Regular", no discount will be applied and the delivery balance of the order will remain unchanged and returned.
 */
 
+
 int main () {
     // Finally, it's our main function. We first have three accounts, one constant owner account, one VIP account, and one regular account.
 
+    //// STUART ////
     // Stuart appears to be the secret owner of all the restaurants and boba shops of New York, he will have an owner account the system created for him and he can't change the account, so it's a constant account. The account username will be "Stuart" and the status will be "Owner".
+    const Account stuart("Stuart", "Owner");
+
+    //// KEVIN ////
     // Kevin appears to be the secret VIP of all the restaurants and boba shops of New York, and he created his VIP account with username "Kevin" and status "VIP".
+    Account kevin("Kevin", "VIP");
+
+    //// BOB ////
     // Bob appears to be a regular customer, who's not aware of Kevin and Stuart's secret identities, created his regular account with username "Bob".
+    Account bob("Bob");
+
     // We will then have a DeliveryOrder pointer that we will later use to point to different orders to allow polymorphism.
-    
+    DeliveryOrder order(/*string username, string date, string phone, float miles*/);
+
     return 0;
 }
 
-//// APPLYDISCOUNT() ////
+//// APPLYDISCOUNT() //// <----- needs work.....
 float applyDiscount(DeliveryOrder order, const Account& accountType) // take in a DeliveryOrder pointer and a constant reference account
 {
     // Check the account status to determine how to apply the discount
