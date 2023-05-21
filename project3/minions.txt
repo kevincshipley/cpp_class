@@ -1,0 +1,3 @@
+Kevin 38 2 1
+Stuart 25.5 1 4
+Bob 23.8 2 0

@@ -1,0 +1,80 @@
+D.Va's Mech System
+
+D.Va is a former professional gamer who now uses her skills to pilot a state-of-the-art mech in defense of her homeland. Her real name is Hana and you can read more about her story hereLinks to an external site.. 
+
+We are writing a program for D.Va's mech to load up before combat. D.Va's mech has two main systems, the micro missile system and the damage matrix system. The micro missile system is used to give damage to the enemies while the damage matrix system is used to absorb damage from enemies. You've seen how D.Va combats on the field during class and we are writing a short program to help D.Va prepare her mech systematically. The link of the video "Shooting Star" is hereLinks to an external site. in case you missed class.
+
+D.Va will be fighting many enemy bots and one enemy boss for each combat. Each bot may have a different power value. D.Va would need a damage matrix system strong enough to absorb all damages from enemies and enough micro missiles to destroy all enemies. D.Va's mech has default power for both the damage matrix system and the micro missile system. If the default power isn't enough, our system would need to load more power to either or both of the systems for D.Va to win the combat.
+
+System Detail
+Our system will read combat information and default settings for D.Va’s mech. It will then run three steps to analyze and prepare the mech for combat. First step is to calculate how much power D.Va needs given the number of enemies she's facing in combat. The second step is to load D.Va's mech with required power to fight the combat. Finally, the system will write a report into a file that D.Va can review before she goes into combat.
+
+1. Read Combat Information
+system.png  
+The monitoring system will give your system a file("combat.txt") containing combat information. When you test your code locally, feel free to download the "combat.txt" file from Canvas to test your code.
+
+In main(), open the file with ifstream and read the information. Please make sure you have logic to check file open in your code and close the file after you finish the file operations.
+
+The given file will contain 3 lines. The first line has one number indicating the number of bots attacking the city. The next line has many integers indicating each enemy bot's damage followed by one float number indicating the enemy boss' damage. The last line is the default setting of D.Va's mech, one integer indicating the number of micro missiles the mech has loaded by default and one float indicating the default power of the defense matrix(the amount of damage defense matrix can absorb).
+
+For example:
+
+5
+9 13 4 8 6 87.15
+10 100.0
+
+This file is indicating that there're 5 enemy bots with damage 9, 13, 4, 8, and 6. And an enemy boss with damage 87.15. D.Va's mech by default has 10 micro missiles loaded and the defense matrix can absorb 100.0 damage from enemies.
+
+When reading the combat file, you will have the followings
+
+an integer botsCount to store the number of bots
+an integer array botsPower[] to store all bot damages
+a float bossPower to store the damage of the boss
+an integer microMissiles to store the number of missiles that are already loaded
+a float defenseMatrix to store the loaded power of the defense matrix
+enemies.png  
+
+ 
+
+2. Calculate Power Needed
+Now your system needs to calculate how much more power needed for the defense matrix system and how many more micro missiles D.Va needs to defeat the enemies. You will write two functions, one to calculate the damage the defense matrix system needs to absorb and another to calculate the power needed by the micro missile system.
+
+matrix.png
+
+I. Defense Matrix Power:
+
+D.Va's defense matrix would need to take all damages from enemies. Your program will have a function named matrix_power which takes in three parameters:
+
+an integer array storing bots' power
+an integer indicating the number of bots
+a float indicating the boss' power
+The function will return a float telling us the total damage of all our enemies.
+
+II. Micro Missile Power:
+
+D.Va's micro missile system would need to be more powerful than the enemies' power. We will make a function named single_missile_power which takes in an int or a float depends on what's being passed in as the parameter. If the passed in argument is less than or equal to 15, then it will returns 2 times the argument. If the passed in argument is greater than 15, then the function will return 5 times the argument. Note that this function will only take one parameter at a time, and the parameter could be of type int or float. The return type will match the type of the parameter. For example, single_missile_power(5) will return 10, and single_missile_power(16.5) will return 82.5. Therefore you will use template for this function.
+
+III. Main Function
+
+In main() you will call the matrix_power function and store the returned value in a float named matrixPowerRequired. You will also calculate the float missilePowerRequired which is the sum of all the returned values from the single_missile_power function by passing in all the bot's power(int) and the boss power(float).
+
+For example, if we have one bot with power 5, one bot with power 8, and one boss with power 12.5, the missilePowerRequired will be equal to single_missile_power(5) + single_missile_power(8) + single_missile_power(12.5). You will want to sum up all the missile power for bots inside main().
+
+3. Load D.Va
+Now that we know how much power is needed for both the micro missile system and the defense matrix system, let's load D.Va's mech to make sure D.Va can win the battle. You will write two functions both with name load_dva. Both load_dva functions will return void and take in two parameters. The two functions have different behaviors. This is where you will use function overloading.
+
+Load Defense Matrix: The first load_dva function will take the currently loaded power of the defense matrix(variable defenseMatrix) and the required power(variable matrixPowerRequired) as the two parameters. The function will update the value of defenseMatrix, therefore you will need to pass-by-reference. Inside the function you need to first check how much damage the current defense matrix can absorb(the value of defenseMatrix). If the matrixPowerRequired is less than the defenseMatrix then we don't need to update it. But if matrixPowerRequired is larger, we need to update the defenseMatrix with the value from matrixPowerRequired.
+Load Micro Missiles: Similar to the load_dva function above, this function will also take two parameters: the number of micro missiles we currently have in the mech microMissiles(read from file) and the missilePowerRequired(calculated from step2). This function can update the number of micro missiles, so make sure you pass in the number of micro missiles by reference. Inside this function, you want to update the number of micro missiles loaded in our mech(microMissiles). The number of micro missiles needed is equal to missilePowerRequired divided by 60. Make sure you round up to an integer, you can use ceil() from <cmath> to round up. For example, ceil(23.6) would return integer 24. Similar to the other load_dva function, if the number of missiles needed is less than the current missiles loaded(microMissiles) then we don't need to change it, but if it's larger, we update the number of micro missiles in the mech.
+Main Function: In main(), you will need to run the load_dva function when loading the defense matrix system and when loading the micro missile system.
+4. Report
+system2.png  
+
+Finally, let's write a summary report for D.Va to review before she heads into the combat. Write a file name "report.txt" into the current directory. The content of the report should look like this:
+
+D.Va's Combat Report
+Combat with 5 enemy bots and one enemy boss with power 87.15.
+Loaded mech with 10 micro missiles and the defense matrix with power 127.15.
+Ready for combat!
+Note that the number of enemy bots, the boss power, the number of missiles, and the defense matrix power in the file are all results calculated from your program and inserted into the file.
+
+Please make sure you have logic to check file open in your code and close the file after you finish.
