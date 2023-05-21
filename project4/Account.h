@@ -4,10 +4,9 @@
 
 using namespace std;
 
-#ifndef BOBAORDER_H
-#define BOBAORDER_H
-
-class Account
+#ifndef ACCOUNT_H
+#define ACCOUNT_H
+class Account 
 {
     //// PRIVATE ////
     private:
