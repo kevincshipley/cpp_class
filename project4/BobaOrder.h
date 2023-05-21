@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <iomanip>
-#include <cmath>
 #include "DeliveryOrder.h"
 using namespace std;
 
