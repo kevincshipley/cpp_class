@@ -46,7 +46,7 @@ const void DeliveryOrder::receipt() {
 //// GETTOTALBALANCE() ////
 // constant getTotalBalance() function that will return the total balance(with delivery fee and tax)
 const float DeliveryOrder::getTotalBalance() {
-    orderBalance * (1 + taxRate) + miles * deliveryRate; // need to pass orderBalance by reference?
+    orderBalance *= (1 + taxRate) + miles * deliveryRate; // need to pass orderBalance by reference?
     return orderBalance;
 };
 
@@ -60,3 +60,8 @@ int DeliveryOrder::getOrderCount() {
 static void addToBalance(float amount) {
     orderBalance += amount;
 };
+
+//// GETORDERBALANCE ////
+static float getOrderBalance() {
+    return orderBalance;
+}

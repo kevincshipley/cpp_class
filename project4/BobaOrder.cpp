@@ -43,7 +43,7 @@ float VIPdiscount() {
         {
             return 0.95;
         }
-        else if (drinksCount <= 2) // return 1 if the number of drinks is less than or equal to 2
+        else // return 1 if the number of drinks is less than or equal to 2
         {
             return 1;
         }
@@ -70,22 +70,21 @@ void addDrink(string drinkName, bool addBoba = 1 /*default Add Boba? to true*/, 
     float drinkPrice=0; // initialize drinkPrice to calc price of each drink + boba if ordered
 
     // then compares drinkName without case mattering
-    // Green Tea Latte: $5.8
-    if (drink == "green tea latte") {
-        drinkPrice += 5.8;
+    if (drink == "green tea latte") // Green Tea Latte: $5.8
+    {
+        drinkPrice = 5.8;
     }
-    // Brown Sugar Boba Milk: $7.8
-    else if (drink == "brown sugar boba milk") {   
-        drinkPrice += 7.8;
-
+    else if (drink == "brown sugar boba milk") // Brown Sugar Boba Milk: $7.8
+    {   
+        drinkPrice = 7.8;
     }
-    // Brown Sugar Pearl Milk: $9.8
-    else if (drink == "brown sugar pearl milk") {
-        drinkPrice += 9.8;
+    else if (drink == "brown sugar pearl milk") // Brown Sugar Pearl Milk: $9.8
+    {
+        drinkPrice = 9.8;
     }
-    else /*invalid entry*/ {
-        // throw the InvalidInput exception and pass in the drink name
-        InvalidInput::InvalidInput(drinkName);
+    else // invalid entry
+    {
+        InvalidInput::InvalidInput(drinkName); // throw the InvalidInput exception and pass in the drink name
     }
     // add boba?
     if (addBoba) {
@@ -95,10 +94,7 @@ void addDrink(string drinkName, bool addBoba = 1 /*default Add Boba? to true*/, 
     drinkPrice = drinkPrice * count;
 
     // At the end of the function make sure you add the number of drinks to the drinksCount and also add the cost of this drink order to the orderBalance of the order.
-    drinksCount += count; // increase drinksCount by how many drinks ordered
-    
-    // trying to add to DeliveryOrder::orderBalance at the end of running addDrink()
-    //// ADDTOBALANCE() //// 
-    DeliveryOrder::addToBalance(drinkPrice);
+    drinksCount += count; // increase drinksCount by how many drinks ordered 
+    DeliveryOrder::addToBalance(drinkPrice); // add the cost of this drink order to the orderBalance of the order
     
 };

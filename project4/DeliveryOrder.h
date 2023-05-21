@@ -84,6 +84,10 @@ class DeliveryOrder {
 
     //// ADDTOBALANCE() //// 
     static void addToBalance(float amount);
+
+    //// GETORDERBALANCE ////
+    static float getOrderBalance();
+
 };
 
 #endif
