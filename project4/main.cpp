@@ -39,7 +39,7 @@ int main () {
     Account bob("Bob");
 
     // We will then have a DeliveryOrder pointer that we will later use to point to different orders to allow polymorphism.
-    DeliveryOrder order(/*string username, string date, string phone, float miles*/);
+    DeliveryOrder* order;
 
     return 0;
 }
