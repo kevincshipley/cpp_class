@@ -45,10 +45,10 @@ int main () {
 }
 
 //// APPLYDISCOUNT() //// <----- needs work.....
-float applyDiscount(DeliveryOrder order, const Account& accountType) // take in a DeliveryOrder pointer and a constant reference account
+float applyDiscount(DeliveryOrder ordr, Account& acct) // take in a DeliveryOrder pointer and a constant reference account
 {
-    // Check the account status to determine how to apply the discount
-    accountType.getStatus();
-    // return the discounted balance of the order
-    order.VIPdiscount();
-}
+    if (acct.getStatus() == "VIP") // Check the account status to determine how to apply the discount
+    {
+        ordr.VIPdiscount(); // return the discounted balance of the order
+    }
+};
