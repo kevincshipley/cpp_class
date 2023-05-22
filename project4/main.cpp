@@ -6,8 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <ctime>
-// #include <iomanip>
+#include <iomanip>
 // #include <cmath>
 using namespace std;
 
@@ -49,32 +48,32 @@ int main () {
     // BobaOrder kOrder("Kevin", "11/20/2022", "123-456-0000", 10.4, "M Tea");
     // order = &kOrder; // DeliveryOrder pointer points to BobaOrder object ???
 
-    order.BobaOrder("Kevin", "11/20/2022", "123-456-0000", 10.4, "M Tea");
+    BobaOrder kOrder("Kevin", "11/20/2022", "123-456-0000", 10.4, "M Tea");
 
     // Because each of the addDrink() function could cause exception, let's put all the addDrink() function calls in a try catch block. Catch the InvalidInput exception by reference and trigger the print_reason() function of the exception.
     try {
-        order.addDrink("Green Tea Latte"); // Kevin adds his first drink order "Green Tea Latte" with all default choices for this drink
+        kOrder.addDrink("Green Tea Latte"); // Kevin adds his first drink order "Green Tea Latte" with all default choices for this drink
     }
     catch (InvalidInput &) {
         throw InvalidInput("Green Tea Latte");
         cout << "Not serving requested drinks. Drink order ignored.\n\n";
     }
     try {
-        order.addDrink("Brown Sugar Pearl Milk", 0); // then his second drink "Brown Sugar Pearl Milk" with no boba
+        kOrder.addDrink("Brown Sugar Pearl Milk", 0); // then his second drink "Brown Sugar Pearl Milk" with no boba
     }
     catch (InvalidInput &) {
         throw InvalidInput("Brown Sugar Pearl Milk");
         cout << "Not serving requested drinks. Drink order ignored.\n\n";
     }
     try {
-        order.addDrink("Brown Sugar Boba Milk", 0, 2); // and two more "Brown Sugar Boba Milk" with no boba.
+        kOrder.addDrink("Brown Sugar Boba Milk", 0, 2); // and two more "Brown Sugar Boba Milk" with no boba.
     }
     catch (InvalidInput &) {
         throw InvalidInput("Brown Sugar Boba Milk");
         cout << "Not serving requested drinks. Drink order ignored.\n\n";
     }
     try {
-        order.addDrink("Iron Goddess"); // Kevin added another order "Iron Goddess" without knowing that the shop isn't serving this drink anymore. This should return an error message for him.
+        kOrder.addDrink("Iron Goddess"); // Kevin added another order "Iron Goddess" without knowing that the shop isn't serving this drink anymore. This should return an error message for him.
     }
     catch (InvalidInput &) {
         throw InvalidInput("Iron Goddess");
@@ -82,16 +81,18 @@ int main () {
     }
 
     // Now the system should print out his receipt.
-    // We first need to call receipt() function to print out the receipt.
-    // Make sure you set cout to only print out 2 decimal places.
-    order.receipt();
+    cout << setprecision(2) << fixed; // Make sure you set cout to only print out 2 decimal places.
+    
+    kOrder.receipt(); // We first need to call receipt() function to print out the receipt.
+
     // Then we output the delivery balance by calling the getTotalBalance() function.
     // The format should be similar to "Balance: $99.99\n".
-    
-    // Don't forget the dollar sign. 
+    cout << "Balance: $" << kOrder.getTotalBalance() << endl;
+     
     // Then we want to output the discounted balance like this "Discounted Balance: $88.88\n".
     // We get the discounted balance by having our DeliveryOrder pointer points to Kevin's order and trigger the applyDiscount() function with Kevin's account.
-    // Finally we finished the receipt by having two addition new lines. (Detail output format see the expected output below)
+    order=&kOrder;
+    cout << "Discounted Balance: $" << applyDiscount(kOrder, kevin) << endl;
 
 
 
@@ -99,7 +100,7 @@ int main () {
 }
 
 //// APPLYDISCOUNT() ////
-float applyDiscount(DeliveryOrder ordr, Account& acct) // take in a DeliveryOrder pointer and a constant reference account
+float applyDiscount(DeliveryOrder& ordr, Account& acct) // take in a DeliveryOrder pointer and a constant reference account
 {
     string aStatus = acct.getStatus();
     // Check the account status to determine how to apply the discount

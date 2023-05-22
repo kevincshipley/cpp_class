@@ -58,10 +58,10 @@ class DeliveryOrder {
     // Class DeliveryOrder will have a constructor, a destructor, and four functions:
 
     //// CONSTRUCTOR ////
-    DeliveryOrder::DeliveryOrder(string name, string date, string phone, float miles);
+    DeliveryOrder(string name, string date, string phone, float miles);
 
     //// DESTRUCTOR ////
-    DeliveryOrder::~DeliveryOrder();
+    ~DeliveryOrder();
 
     //// RECEIPT() ////
     // constant receipt() function that will print out the order receipt
