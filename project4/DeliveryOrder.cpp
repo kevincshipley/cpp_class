@@ -1,11 +1,3 @@
-// This is the class source file, where the Class Implementation happens
-
-/*
-Implementation:
-- Defines the detail logic of each operations
-- Normally implemented in a separate source file
-*/
-
 #include <iostream>
 #include <fstream>
 #include <string>

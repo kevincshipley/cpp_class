@@ -1,13 +1,3 @@
-// This is the header file, where the Class Interface happens
-    // NOTES: Compiler uses header files to match definition and function calls
-
-/*
-Interface:
-- Defines objects being store in the class
-- Defines operations that can happen in the class
-- Implemented in header files
-*/
-
 // NOTE: this is the Base Class
 // is this also considered an Abstract Class?
 
