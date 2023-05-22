@@ -39,7 +39,7 @@ int main () {
     // We will then have a DeliveryOrder pointer that we will later use to point to different orders to allow polymorphism.
     DeliveryOrder* order; // DeliveryOrder base class pointer
 
-    // 1. Kevin Placing Order
+    //// KEVIN PLACING ORDER ////
     // Kevin starts to order boba drinks for everyone. Let's first output
     cout << "Kevin placing order.\n";
     // He creates his order with his name "Kevin", date "11/20/2022", phone number "123-456-0000". He's placing order at the shop "M Tea" and looks like the miles for the delivery is 10.4 miles.
@@ -93,6 +93,34 @@ int main () {
     order=&kOrder;
     cout << "Discounted Balance: $" << applyDiscount(kOrder, kevin) << endl;
 
+    //// STUART PLACING ORDER ////
+    // Stuart then wants to order foods for everyone. Let's again output
+    cout << "Stuart placing order." << endl;
+
+    // Stuart creates his order with name "Stuart", same date as Kevin's order. His phone number is "123-456-1111". He's ordering from the restaurant "Tavern Green" which is 25.5 miles from their place.
+    FoodOrder sOrder("Stuart", "11/20/2022", "123-456-1111", 25.5, "Tavern Green");
+    
+    // He's ordering a "Thick Cauliflower Steaks" with one sides and soup, a "Organic Scottish Salmon" with no side no soup, and a "Rack of Lamb" with one soup and no side.
+
+    // Similarly here that each of the addFood() function could cause exception, let's put all the addFood() function calls in a try catch block. Catch the InvalidInput exception by reference and trigger the print_reason() function of the exception. Then output
+
+    // "Not serving requested food. Food order ignored.\n\n"
+    // before we end the catch block.
+
+    // Now the system print out his receipt. Similarly we first call receipt() to print out the receipt for his order. Then we output the delivery balance by calling getTotalBalance() function. Same format as indicated above. Then we output the discounted balance using the same format as above as well. You would need to get the discounted balance by calling the applyDiscount() function as well. And we finish the receipt with two extra new lines.
+
+    //// BOB PLACING ORDER ////
+    // Now Bob found out that Stuart get such good pricing on food ordering, he's wondering whether he can get that too. Let's output
+
+    // "Bob decided to log in to his account and see whether he can afford ordering the same order as Stuart.\n"
+    // Bob is trying to place the same order, so he's using the same order object that Stuart created. We can start by printing the receipt for Bob. We can directly call the receipt() function from the order Stuart created. Then we output the delivery balance as before by calling getTotalBalance() function. Followed by printing out the discounted balance but this time we pass in Bob's account to the applyDiscount() function. Keep the same format as before when you print. Bob sees the discounted balance and he's upset that he needs to pay so much. Therefore he decided not to place the order and have Stuart do it. Therefore the system will output
+
+    // "Bob upset, cancelling order :(\n\n"
+    // Finally, we will output the number of order placed. The format will be
+
+    // "Total order placed: 2.\n\n"
+    // You get the number of order placed by calling the static function getOrderCount() from DeliveryOrder.
+
     return 0;
 }
 
@@ -114,3 +142,5 @@ float applyDiscount(DeliveryOrder ordr, Account& acct) // take in a DeliveryOrde
         return ordr.getOrderBalance() * 1; // no modification to order for Regular users
     }
 };
+
+// 
