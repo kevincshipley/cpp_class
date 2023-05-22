@@ -6,7 +6,7 @@
 using namespace std;
 
 //// CONSTRUCTOR ////
-Account::Account(string un, string st="Regular") {
+Account::Account(string un, string st) {
     // The status is optional but can be "VIP", "Owner", or "Regular".
     setUsername(un);
     setStatus(st);
