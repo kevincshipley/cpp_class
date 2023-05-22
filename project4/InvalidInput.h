@@ -13,9 +13,10 @@ class InvalidInput {
         InvalidInput(string input) : message("Invalid input \"" + input + "\".\n") {
             print_reason();
         };
+
         //// PRINT_REASON() ////
         void print_reason() {
-            cout << InvalidInput::message;
+            cout << message;
         };
 
     private:

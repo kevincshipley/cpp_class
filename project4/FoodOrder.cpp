@@ -79,10 +79,10 @@ void addFood(string main/*name of main course*/, int side=0/*# of sides*/, bool 
     {
         foodPrice = 46;
     }
-    else // invalid entry
-    {
-        InvalidInput::InvalidInput(foodName); // throw the InvalidInput exception and pass in the food name
-    }
+    // else // invalid entry
+    // {
+    //     throw InvalidInput(foodName); // throw the InvalidInput exception and pass in the food name
+    // }
     
     /// ADD-ON COSTS ///
     // Adding soup costs $5

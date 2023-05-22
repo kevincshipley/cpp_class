@@ -82,10 +82,11 @@ void addDrink(string drinkName, bool addBoba = 1 /*default Add Boba? to true*/, 
     {
         drinkPrice = 9.8;
     }
-    else // invalid entry
-    {
-        InvalidInput::InvalidInput(drinkName); // throw the InvalidInput exception and pass in the drink name
-    }
+    // else // invalid entry
+    // {
+    //     throw InvalidInput(drinkName); // throw the InvalidInput exception and pass in the drink name
+    // }
+    
     // add boba?
     if (addBoba) {
         drinkPrice += 1.5;

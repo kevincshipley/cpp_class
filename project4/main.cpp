@@ -21,7 +21,6 @@ The applyDiscount() function will check the account status to determine how to a
 > If the account status is "Regular", no discount will be applied and the delivery balance of the order will remain unchanged and returned.
 */
 
-
 int main () {
     // Finally, it's our main function. We first have three accounts, one constant owner account, one VIP account, and one regular account.
 
