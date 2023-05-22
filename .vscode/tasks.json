@@ -6,10 +6,10 @@
             "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
-                //"-g",
-                "${workspaceFolder}/*.cpp",
+                "-g",
+                "${workspaceFolder}/*.cpp", // modified to execute multiple cpp files
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe" // modified to execute multiple cpp files
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
