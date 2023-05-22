@@ -94,13 +94,11 @@ int main () {
     order=&kOrder;
     cout << "Discounted Balance: $" << applyDiscount(kOrder, kevin) << endl;
 
-
-
     return 0;
 }
 
 //// APPLYDISCOUNT() ////
-float applyDiscount(DeliveryOrder& ordr, Account& acct) // take in a DeliveryOrder pointer and a constant reference account
+float applyDiscount(DeliveryOrder ordr, Account& acct) // take in a DeliveryOrder pointer and a constant reference account
 {
     string aStatus = acct.getStatus();
     // Check the account status to determine how to apply the discount
@@ -112,8 +110,8 @@ float applyDiscount(DeliveryOrder& ordr, Account& acct) // take in a DeliveryOrd
     {
         return ordr.VIPdiscount() * ordr.getOrderBalance(); // return the order discounted based on Boba/Food order discount
     }
-    else if (aStatus == "Regular") // Regular
+    else // Regular
     {
-        return ordr.getOrderBalance(); // no modification to order for Regular users
+        return ordr.getOrderBalance() * 1; // no modification to order for Regular users
     }
 };

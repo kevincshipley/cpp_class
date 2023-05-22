@@ -80,6 +80,7 @@ class DeliveryOrder {
     virtual float VIPdiscount() {
         // this will return a discount rate to multiple orderBalance by
         // rate is based on the type of Order being placed (Boba vs. Food) which will have a determining factor setting the discount rate
+        return 1;
     };
 
     //// ADDTOBALANCE() //// 
